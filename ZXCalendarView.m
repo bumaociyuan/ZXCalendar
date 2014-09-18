@@ -37,6 +37,48 @@
     [self updateGridViews];
 }
 
+- (void)setSelectedDate:(NSDate *)selectedDate animated:(BOOL)animated {
+    if (animated) {
+        UIView *fakeView = [self snapshotViewAfterScreenUpdates:YES];
+        fakeView.frame = self.frame;
+        [self.superview addSubview:fakeView];
+        
+        NSComparisonResult compareResult = NSOrderedSame;
+        compareResult = [selectedDate compare:_selectedDate];
+        
+        CGFloat width = self.frame.size.width;
+        CGPoint center = self.center;
+        
+        switch (compareResult) {
+            case NSOrderedAscending:
+                self.center = CGPointMake(center.x - width, center.y);
+                break;
+            case NSOrderedDescending:
+                self.center = CGPointMake(center.x + width, center.y);
+                break;
+            default:
+                break;
+        }
+
+        //FIXME: config with NSOrderedSame
+        
+        [UIView animateWithDuration:.5 animations:^{
+            CGPoint centerOfFakeView = fakeView.center;
+            if (compareResult == NSOrderedAscending) {
+                centerOfFakeView.x = fakeView.center.x + self.frame.size.width;
+            }else if (compareResult == NSOrderedDescending){
+                centerOfFakeView.x = fakeView.center.x - self.frame.size.width;
+            }
+            fakeView.center = centerOfFakeView;
+            self.center = center;
+        } completion:^(BOOL finished) {
+            [fakeView removeFromSuperview];
+        }];
+    }
+    
+    [self setSelectedDate:selectedDate];
+}
+
 #pragma mark - property
 - (void)setDateSource:(id<ZXCalendarViewDataSource>)dateSource {
     if (_dateSource != dateSource) {
@@ -56,6 +98,9 @@
 - (void)setSelectedDate:(NSDate *)selectedDate {
     if (![_selectedDate isEqualToDate:selectedDate]) {
         _selectedDate = selectedDate;
+        if (![_selectedDate sameMonthWithDate:selectedDate]) {
+            
+        }
         [self updateGridViews];
     }
 }
@@ -76,7 +121,6 @@
 }
 
 #pragma mark - helper
-
 - (void)updateFrame {
     CGRect frame = self.frame;
     if (self.type == ZXCalendarViewTypeMonth) {

@@ -45,7 +45,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 - (IBAction)swipe:(id)sender {
-    if (sender == self.left) {
+    if (sender == self.right) {
         if (self.calendarView.type == ZXCalendarViewTypeMonth) {
             [self lastMonth:nil];
         }else {
@@ -66,18 +66,20 @@
 
 
 - (IBAction)nextMonth:(id)sender {
-    self.calendarView.selectedDate = [self.calendarView.selectedDate associateDayOfTheFollowingMonth];
+    [self.calendarView setSelectedDate:[self.calendarView.selectedDate associateDayOfTheFollowingMonth] animated:YES];
+    
 }
 - (IBAction)lastMonth:(id)sender {
-    self.calendarView.selectedDate = [self.calendarView.selectedDate associateDayOfThePreviousMonth];
+    [self.calendarView setSelectedDate:[self.calendarView.selectedDate associateDayOfThePreviousMonth] animated:YES];
+    
 }
 
 - (IBAction)nextWeek:(id)sender {
-        self.calendarView.selectedDate = [self.calendarView.selectedDate  dateWithDayInterval:7];
+    [self.calendarView setSelectedDate:[self.calendarView.selectedDate  dateWithDayInterval:7] animated:YES];
 }
 
 - (IBAction)lastWeek:(id)sender {
-    self.calendarView.selectedDate = [self.calendarView.selectedDate  dateWithDayInterval:-7];
+    [self.calendarView setSelectedDate:[self.calendarView.selectedDate  dateWithDayInterval:-7] animated:YES];
 }
 
 @end

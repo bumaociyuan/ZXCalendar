@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, ZXCalendarViewType) {
 @property (nonatomic, weak) id<ZXCalendarViewDelegate> delegate;
 @property (nonatomic, assign) ZXCalendarViewType type;
 @property (nonatomic, strong) NSDate *selectedDate;
-
+- (void)setSelectedDate:(NSDate *)selectedDate animated:(BOOL)animated;
 + (instancetype)calendarView;
 - (void)reloadData;
 
