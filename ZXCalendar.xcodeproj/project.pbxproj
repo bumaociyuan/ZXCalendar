@@ -21,10 +21,10 @@
 		233FD4A619CA642200988D80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233FD48819CA642200988D80 /* UIKit.framework */; };
 		233FD4AE19CA642200988D80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 233FD4AC19CA642200988D80 /* InfoPlist.strings */; };
 		233FD4B019CA642200988D80 /* ZXCalendarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 233FD4AF19CA642200988D80 /* ZXCalendarTests.m */; };
-		233FD4BC19CA645F00988D80 /* ZXCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 233FD4BB19CA645F00988D80 /* ZXCalendarView.m */; };
-		233FD4BF19CA646F00988D80 /* ZXCalendarGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 233FD4BE19CA646F00988D80 /* ZXCalendarGridView.m */; };
-		233FD4C619CA65BE00988D80 /* LunarCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 233FD4C219CA65BE00988D80 /* LunarCalendar.m */; };
-		233FD4C719CA65BE00988D80 /* NSDate+Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 233FD4C519CA65BE00988D80 /* NSDate+Calendar.m */; };
+		233FD4D319CAA0E500988D80 /* LunarCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 233FD4CC19CAA0E500988D80 /* LunarCalendar.m */; };
+		233FD4D419CAA0E500988D80 /* NSDate+Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 233FD4CE19CAA0E500988D80 /* NSDate+Calendar.m */; };
+		233FD4D519CAA0E500988D80 /* ZXCalendarGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 233FD4D019CAA0E500988D80 /* ZXCalendarGridView.m */; };
+		233FD4D619CAA0E500988D80 /* ZXCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 233FD4D219CAA0E500988D80 /* ZXCalendarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,14 +57,14 @@
 		233FD4AB19CA642200988D80 /* ZXCalendarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZXCalendarTests-Info.plist"; sourceTree = "<group>"; };
 		233FD4AD19CA642200988D80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		233FD4AF19CA642200988D80 /* ZXCalendarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXCalendarTests.m; sourceTree = "<group>"; };
-		233FD4BA19CA645F00988D80 /* ZXCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXCalendarView.h; sourceTree = "<group>"; };
-		233FD4BB19CA645F00988D80 /* ZXCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXCalendarView.m; sourceTree = "<group>"; };
-		233FD4BD19CA646F00988D80 /* ZXCalendarGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXCalendarGridView.h; sourceTree = "<group>"; };
-		233FD4BE19CA646F00988D80 /* ZXCalendarGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXCalendarGridView.m; sourceTree = "<group>"; };
-		233FD4C119CA65BE00988D80 /* LunarCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunarCalendar.h; sourceTree = "<group>"; };
-		233FD4C219CA65BE00988D80 /* LunarCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunarCalendar.m; sourceTree = "<group>"; };
-		233FD4C419CA65BE00988D80 /* NSDate+Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calendar.h"; sourceTree = "<group>"; };
-		233FD4C519CA65BE00988D80 /* NSDate+Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calendar.m"; sourceTree = "<group>"; };
+		233FD4CB19CAA0E500988D80 /* LunarCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunarCalendar.h; sourceTree = "<group>"; };
+		233FD4CC19CAA0E500988D80 /* LunarCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunarCalendar.m; sourceTree = "<group>"; };
+		233FD4CD19CAA0E500988D80 /* NSDate+Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calendar.h"; sourceTree = "<group>"; };
+		233FD4CE19CAA0E500988D80 /* NSDate+Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calendar.m"; sourceTree = "<group>"; };
+		233FD4CF19CAA0E500988D80 /* ZXCalendarGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXCalendarGridView.h; sourceTree = "<group>"; };
+		233FD4D019CAA0E500988D80 /* ZXCalendarGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXCalendarGridView.m; sourceTree = "<group>"; };
+		233FD4D119CAA0E500988D80 /* ZXCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXCalendarView.h; sourceTree = "<group>"; };
+		233FD4D219CAA0E500988D80 /* ZXCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXCalendarView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +94,7 @@
 		233FD47819CA642200988D80 = {
 			isa = PBXGroup;
 			children = (
-				233FD4C019CA65BE00988D80 /* LunarCalendar */,
-				233FD4C319CA65BE00988D80 /* NSDate */,
-				233FD4B919CA644700988D80 /* Class */,
+				233FD4CA19CAA0E500988D80 /* Class */,
 				233FD48A19CA642200988D80 /* ZXCalendar */,
 				233FD4A919CA642200988D80 /* ZXCalendarTests */,
 				233FD48319CA642200988D80 /* Frameworks */,
@@ -167,33 +165,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		233FD4B919CA644700988D80 /* Class */ = {
+		233FD4CA19CAA0E500988D80 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				233FD4BA19CA645F00988D80 /* ZXCalendarView.h */,
-				233FD4BB19CA645F00988D80 /* ZXCalendarView.m */,
-				233FD4BD19CA646F00988D80 /* ZXCalendarGridView.h */,
-				233FD4BE19CA646F00988D80 /* ZXCalendarGridView.m */,
+				233FD4CB19CAA0E500988D80 /* LunarCalendar.h */,
+				233FD4CC19CAA0E500988D80 /* LunarCalendar.m */,
+				233FD4CD19CAA0E500988D80 /* NSDate+Calendar.h */,
+				233FD4CE19CAA0E500988D80 /* NSDate+Calendar.m */,
+				233FD4CF19CAA0E500988D80 /* ZXCalendarGridView.h */,
+				233FD4D019CAA0E500988D80 /* ZXCalendarGridView.m */,
+				233FD4D119CAA0E500988D80 /* ZXCalendarView.h */,
+				233FD4D219CAA0E500988D80 /* ZXCalendarView.m */,
 			);
-			name = Class;
-			sourceTree = "<group>";
-		};
-		233FD4C019CA65BE00988D80 /* LunarCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				233FD4C119CA65BE00988D80 /* LunarCalendar.h */,
-				233FD4C219CA65BE00988D80 /* LunarCalendar.m */,
-			);
-			path = LunarCalendar;
-			sourceTree = "<group>";
-		};
-		233FD4C319CA65BE00988D80 /* NSDate */ = {
-			isa = PBXGroup;
-			children = (
-				233FD4C419CA65BE00988D80 /* NSDate+Calendar.h */,
-				233FD4C519CA65BE00988D80 /* NSDate+Calendar.m */,
-			);
-			path = NSDate;
+			path = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,13 +277,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				233FD4C619CA65BE00988D80 /* LunarCalendar.m in Sources */,
-				233FD4BF19CA646F00988D80 /* ZXCalendarGridView.m in Sources */,
 				233FD49B19CA642200988D80 /* ViewController.m in Sources */,
 				233FD49519CA642200988D80 /* AppDelegate.m in Sources */,
+				233FD4D519CAA0E500988D80 /* ZXCalendarGridView.m in Sources */,
+				233FD4D419CAA0E500988D80 /* NSDate+Calendar.m in Sources */,
+				233FD4D619CAA0E500988D80 /* ZXCalendarView.m in Sources */,
+				233FD4D319CAA0E500988D80 /* LunarCalendar.m in Sources */,
 				233FD49119CA642200988D80 /* main.m in Sources */,
-				233FD4BC19CA645F00988D80 /* ZXCalendarView.m in Sources */,
-				233FD4C719CA65BE00988D80 /* NSDate+Calendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +488,7 @@
 				233FD4B519CA642200988D80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		233FD4B619CA642200988D80 /* Build configuration list for PBXNativeTarget "ZXCalendarTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +497,7 @@
 				233FD4B819CA642200988D80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

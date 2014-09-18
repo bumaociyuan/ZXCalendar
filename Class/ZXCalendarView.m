@@ -62,7 +62,7 @@
 
         //FIXME: config with NSOrderedSame
         
-        [UIView animateWithDuration:.5 animations:^{
+        [UIView animateWithDuration:ANIMATION_DURATION animations:^{
             CGPoint centerOfFakeView = fakeView.center;
             if (compareResult == NSOrderedAscending) {
                 centerOfFakeView.x = fakeView.center.x + self.frame.size.width;
@@ -85,7 +85,6 @@
         _dateSource = dateSource;
         [self updateGridViews];
     }
-    
 }
 
 - (NSMutableArray *)gridViews {

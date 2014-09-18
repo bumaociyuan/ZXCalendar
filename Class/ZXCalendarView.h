@@ -11,6 +11,7 @@
 
 #define GRID_HEIGHT 46.0f
 #define GRID_WIDTH 46.0f
+#define ANIMATION_DURATION .35f
 
 typedef NS_ENUM(NSInteger, ZXCalendarViewType) {
     ZXCalendarViewTypeMonth = 0,
