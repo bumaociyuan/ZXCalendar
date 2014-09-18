@@ -1,6 +1,8 @@
 Pod::Spec.new do |s|
   s.name     = 'ZXCalendar'
   s.version  = '1.0.0'
+  s.platform = :ios
+  s.ios.deployment_target = '5.0'
   s.license  = { :type => 'MIT', :file => 'LICENSE.md' }
   s.summary  = "支持农历的日历 ,simple canledar support lunar , and customizable"
   s.homepage = 'https://github.com/bumaociyuan/ZXCalendar'
