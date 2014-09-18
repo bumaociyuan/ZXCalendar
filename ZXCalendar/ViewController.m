@@ -10,8 +10,10 @@
 #import "ZXCalendarView.h"
 #import "NSDate+Calendar.h"
 
-@interface ViewController ()<ZXCalendarViewDataSource>
+@interface ViewController ()<ZXCalendarViewDataSource, ZXCalendarViewDelegate>
 @property (nonatomic, strong) ZXCalendarView *calendarView;
+@property (nonatomic, weak) IBOutlet UISwipeGestureRecognizer *left;
+@property (nonatomic, weak) IBOutlet UISwipeGestureRecognizer *right;
 @end
 
 @implementation ViewController
@@ -21,18 +23,43 @@
     ZXCalendarView *view = [ZXCalendarView calendarView];
     view.selectedDate = [NSDate date];
     view.dateSource = self;
+    view.delegate = self;
     [self.view addSubview:view];
     self.calendarView = view;
     view.center = self.view.center;
     self.view.backgroundColor = [UIColor colorWithRed:0.361 green:0.537 blue:0.293 alpha:1.000];
+    [view addGestureRecognizer:self.left];
+    [view addGestureRecognizer:self.right];
 }
 
 - (ZXCalendarGridViewType)calendarView:(ZXCalendarView *)calendarView typeAtDate:(NSDate *)date {
-    if ([date isEqualToDate:[NSDate date]]) {
-        return ZXCalendarGridViewTypeToday;
-    }
+    //TODO: 自己写逻辑
     return ZXCalendarGridViewTypeNone;
 }
+
+- (void)calendarView:(ZXCalendarView *)calendarView didSelectedAtDate:(NSDate *)date {
+    calendarView.selectedDate = date;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+- (IBAction)swipe:(id)sender {
+    if (sender == self.left) {
+        if (self.calendarView.type == ZXCalendarViewTypeMonth) {
+            [self lastMonth:nil];
+        }else {
+            [self lastWeek:nil];
+        }
+    }else {
+        if (self.calendarView.type == ZXCalendarViewTypeMonth) {
+            [self nextMonth:nil];
+        }else {
+            [self nextWeek:nil];
+        }
+    }
+}
+
 - (IBAction)typeChange:(UISwitch *)sender {
     self.calendarView.type = !self.calendarView.type;
 }
@@ -45,5 +72,12 @@
     self.calendarView.selectedDate = [self.calendarView.selectedDate associateDayOfThePreviousMonth];
 }
 
+- (IBAction)nextWeek:(id)sender {
+        self.calendarView.selectedDate = [self.calendarView.selectedDate  dateWithDayInterval:7];
+}
+
+- (IBAction)lastWeek:(id)sender {
+    self.calendarView.selectedDate = [self.calendarView.selectedDate  dateWithDayInterval:-7];
+}
 
 @end

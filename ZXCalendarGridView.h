@@ -15,11 +15,12 @@ typedef NS_ENUM(NSInteger, ZXCalendarGridViewType) {
     ZXCalendarGridViewTypeOther         = 3
 };
 
-@interface ZXCalendarGridView : UIView
+@interface ZXCalendarGridView : UIControl
 
-+ (instancetype)gridView;
++ (instancetype)gridViewWithOnClick:(void(^)(ZXCalendarGridView *))onClick;
 
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, assign) ZXCalendarGridViewType type;
+@property (nonatomic, strong) void(^onClick)(ZXCalendarGridView *);
 
 @end

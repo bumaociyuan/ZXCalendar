@@ -23,16 +23,17 @@ typedef NS_ENUM(NSInteger, ZXCalendarViewType) {
 - (ZXCalendarGridViewType)calendarView:(ZXCalendarView *)calendarView typeAtDate:(NSDate *)date;
 @end
 @protocol ZXCalendarViewDelegate <NSObject>
+- (void)calendarView:(ZXCalendarView *)calendarView didSelectedAtDate:(NSDate *)date;
 @end
 
 @interface ZXCalendarView : UIView
-
-+ (instancetype)calendarView;
 
 @property (nonatomic, weak) id<ZXCalendarViewDataSource> dateSource;
 @property (nonatomic, weak) id<ZXCalendarViewDelegate> delegate;
 @property (nonatomic, assign) ZXCalendarViewType type;
 @property (nonatomic, strong) NSDate *selectedDate;
 
++ (instancetype)calendarView;
+- (void)reloadData;
 
 @end

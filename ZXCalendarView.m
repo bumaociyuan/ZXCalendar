@@ -13,6 +13,7 @@
 @interface ZXCalendarView () {
     NSDate *_selectedDate;
 }
+
 @property (nonatomic, strong) NSMutableArray *gridViews;
 @end
 
@@ -32,7 +33,19 @@
     return self;
 }
 
+- (void)reloadData {
+    [self updateGridViews];
+}
+
 #pragma mark - property
+- (void)setDateSource:(id<ZXCalendarViewDataSource>)dateSource {
+    if (_dateSource != dateSource) {
+        _dateSource = dateSource;
+        [self updateGridViews];
+    }
+    
+}
+
 - (NSMutableArray *)gridViews {
     if (!_gridViews) {
         _gridViews = [NSMutableArray new];
@@ -58,6 +71,7 @@
     if (_type != type) {
         _type = type;
         [self updateFrame];
+        [self updateGridViews];
     }
 }
 
@@ -95,39 +109,65 @@
 
 - (void)setupGridViews {
     for (int i = 0; i < 35; i++) {
-        ZXCalendarGridView *gridView = [ZXCalendarGridView gridView];
+        ZXCalendarGridView *gridView = [ZXCalendarGridView gridViewWithOnClick:^(ZXCalendarGridView * sender) {
+            [self.delegate calendarView:self didSelectedAtDate:sender.date];
+        }];
         [self.gridViews addObject:gridView];
     }
 }
 
 - (void)updateGridViews {
     NSDate *selecetedDate = self.selectedDate;
-    NSDate *firstDateInThisMonth = nil;
     NSDate *firstDateInThisCalendar = nil;
-    NSInteger daysInThisType = 0;
-    firstDateInThisMonth = [selecetedDate firstDayOfTheMonth];
-    daysInThisType = [selecetedDate numberOfDaysInMonth];
 
-    NSInteger weekday = firstDateInThisMonth.weekday;
-    
-    if (weekday == 7) {
-        firstDateInThisCalendar = firstDateInThisMonth;
+    if (self.type == ZXCalendarViewTypeMonth) {
+        NSDate *firstDateInThisMonth = nil;
+        firstDateInThisMonth = [selecetedDate firstDayOfTheMonth];
+        NSInteger weekday = firstDateInThisMonth.weekday;
+        if (weekday == 7) {
+            firstDateInThisCalendar = firstDateInThisMonth;
+        }else {
+            firstDateInThisCalendar = [firstDateInThisMonth dateWithDayInterval:-weekday + 1];
+        }
+        for (int i = 0; i < 35; i++) {
+            NSDate *date = [firstDateInThisCalendar dateWithDayInterval:i];
+            ZXCalendarGridView *gridView = self.gridViews[i];
+            [self configGridView:gridView date:date];
+        }
     }else {
-        firstDateInThisCalendar = [firstDateInThisMonth dateWithDayInterval:-weekday + 1];
+        NSDate *firstDateInThisWeek = nil;
+        firstDateInThisWeek = [selecetedDate firstDayOfTheWeek];
+        firstDateInThisCalendar = firstDateInThisWeek;
+        for (int i = 0; i < 7; i++) {
+            NSDate *date = [firstDateInThisCalendar dateWithDayInterval:i];
+            ZXCalendarGridView *gridView = self.gridViews[i];
+            [self configGridView:gridView date:date];
+        }
     }
+}
 
-    for (int i = 0; i < 35; i++) {
-        NSDate *date = [firstDateInThisCalendar dateWithDayInterval:i];
-        ZXCalendarGridView *gridView = self.gridViews[i];
-        gridView.date = date;
-        if (![date sameMonthWithDate:selecetedDate]) {
+- (void)configGridView:(ZXCalendarGridView *)gridView date:(NSDate *)date {
+    gridView.date = date;
+    if (self.type == ZXCalendarViewTypeMonth) {
+        if (![date sameMonthWithDate:self.selectedDate]) {
             gridView.type = ZXCalendarGridViewTypeOther;
+        }else if ([date sameDayWithDate:self.selectedDate]) {
+            gridView.type = ZXCalendarGridViewTypeSelected;
         }else if ([date sameDayWithDate:[NSDate date]]) {
             gridView.type = ZXCalendarGridViewTypeToday;
-        }else {
+        }else{
+            gridView.type = [self.dateSource calendarView:self typeAtDate:date];
+        }
+    }else {
+        if ([date sameDayWithDate:self.selectedDate]) {
+            gridView.type = ZXCalendarGridViewTypeSelected;
+        }else if ([date sameDayWithDate:[NSDate date]]) {
+            gridView.type = ZXCalendarGridViewTypeToday;
+        }else{
             gridView.type = [self.dateSource calendarView:self typeAtDate:date];
         }
     }
+
 }
 
 @end

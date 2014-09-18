@@ -20,8 +20,9 @@
 
 @implementation ZXCalendarGridView
 
-+ (instancetype)gridView {
++ (instancetype)gridViewWithOnClick:(void (^)(ZXCalendarGridView *))onClick {
     ZXCalendarGridView *result = [[self alloc]init];
+    result.onClick = onClick;
     return result;
 }
 
@@ -58,10 +59,18 @@
     [self updateUI];
 }
 
+#pragma mark - target action
+- (void)pressed:(ZXCalendarGridView *)sender {
+    if (self.onClick) {
+        self.onClick(self);
+    }
+}
+
 #pragma mark - helper
 - (void)setup {
     self.frame = CGRectMake(0, 0, GRID_WIDTH, GRID_HEIGHT);
     self.backgroundColor = [UIColor whiteColor];
+    [self addTarget:self action:@selector(pressed:) forControlEvents:UIControlEventTouchUpInside];
     [self setupLabels];
     [self updateUI];
 }
